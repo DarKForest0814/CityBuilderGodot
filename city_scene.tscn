@@ -1,0 +1,193 @@
+[gd_scene load_steps=21 format=3 uid="uid://dyd10ofa5v0kj"]
+
+[ext_resource type="PackedScene" uid="uid://bxisp2qh6qj2g" path="res://Assets/env1.blend" id="1_4y43a"]
+[ext_resource type="Script" path="res://camera.gd" id="1_74emx"]
+[ext_resource type="Script" path="res://interfaceManager.gd" id="2_huftw"]
+[ext_resource type="Script" path="res://MouseArea2d.gd" id="4_da3nu"]
+[ext_resource type="Texture2D" uid="uid://cdsnp3012kn85" path="res://Icons/office.png" id="4_era61"]
+[ext_resource type="Theme" uid="uid://cydykq3qlimf4" path="res://Textures/UITheme.tres" id="4_p3cix"]
+[ext_resource type="Texture2D" uid="uid://dajp23sqdsjjr" path="res://Textures/buttonBack.png" id="5_04fxe"]
+[ext_resource type="Texture2D" uid="uid://ddhktuchis1xy" path="res://Icons/close.png" id="5_4q8c8"]
+[ext_resource type="Texture2D" uid="uid://2immq8n1sgj0" path="res://Textures/skybox.exr" id="10_2w8r0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oxo1t"]
+size = Vector3(12.5419, 1, 9.7583)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wtk1t"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ny5yh"]
+texture = ExtResource("5_04fxe")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uxim4"]
+texture = ExtResource("5_04fxe")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q4gm2"]
+texture = ExtResource("5_04fxe")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xcre6"]
+texture = ExtResource("5_04fxe")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jo7a6"]
+size = Vector2(1171, 164)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u1ydi"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_mw5wo"]
+panorama = ExtResource("10_2w8r0")
+
+[sub_resource type="Sky" id="Sky_ulos3"]
+sky_material = SubResource("PanoramaSkyMaterial_mw5wo")
+
+[sub_resource type="Environment" id="Environment_0o6h6"]
+background_mode = 2
+background_energy_multiplier = 1.75
+sky = SubResource("Sky_ulos3")
+sky_custom_fov = 59.2
+sky_rotation = Vector3(0, -3.15905, 0)
+
+[node name="CityScene" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 200)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(39.2299, 0, 0, 0, 0.241682, 0, 0, 0, 38.26, 0, 0, 0)
+shape = SubResource("BoxShape3D_oxo1t")
+
+[node name="env1" parent="StaticBody3D" instance=ExtResource("1_4y43a")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0, -3.05261, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.670945, 0.741507, 0, -0.741507, 0.670945, 0, 22.4479, 8.91553)
+script = ExtResource("1_74emx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.718636, 1.08564, 0)
+mesh = SubResource("CapsuleMesh_wtk1t")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -191.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("2_huftw")
+
+[node name="BuildButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.309
+anchor_right = 0.123
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -49.019
+offset_right = 53.304
+offset_bottom = -31.0
+grow_vertical = 0
+theme = ExtResource("4_p3cix")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ny5yh")
+icon = ExtResource("4_era61")
+icon_alignment = 1
+expand_icon = true
+
+[node name="BuildPanel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -143.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_p3cix")
+
+[node name="StoreButton" type="Button" parent="Control/BuildPanel"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 17.0
+offset_right = 179.0
+offset_bottom = 124.0
+theme = ExtResource("4_p3cix")
+text = "Shop"
+
+[node name="BuildHouseButton" type="Button" parent="Control/BuildPanel"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 20.0
+offset_right = 355.0
+offset_bottom = 127.0
+theme = ExtResource("4_p3cix")
+text = "House"
+
+[node name="CloseBuildMenu" type="Button" parent="Control/BuildPanel"]
+layout_mode = 0
+offset_left = 1070.0
+offset_top = 56.0
+offset_right = 1142.0
+offset_bottom = 130.0
+theme = ExtResource("4_p3cix")
+theme_override_styles/hover = SubResource("StyleBoxTexture_uxim4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_q4gm2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xcre6")
+icon = ExtResource("5_4q8c8")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Area2D" type="Area2D" parent="Control"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Area2D"]
+position = Vector2(568, 112)
+shape = SubResource("RectangleShape2D_jo7a6")
+
+[node name="Cash" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -2.398
+anchor_bottom = -2.398
+offset_left = 177.0
+offset_top = 16.018
+offset_right = 305.0
+offset_bottom = 39.018
+theme = ExtResource("4_p3cix")
+text = "Money"
+
+[node name="Time" type="Label" parent="Control"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = -443.0
+offset_right = 159.0
+offset_bottom = -420.0
+theme = ExtResource("4_p3cix")
+text = "TIME"
+
+[node name="PlayerInfo" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -315.0
+offset_top = -445.0
+offset_right = -17.0
+offset_bottom = -329.0
+grow_horizontal = 0
+theme = ExtResource("4_p3cix")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("4_da3nu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_u1ydi")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0o6h6")
+
+[connection signal="button_down" from="Control/BuildButton" to="Control" method="_on_build_button_button_down"]
+[connection signal="hidden" from="Control/BuildPanel" to="Control" method="_on_build_panel_hidden"]
+[connection signal="button_down" from="Control/BuildPanel/StoreButton" to="Control" method="on_build_button_down"]
+[connection signal="button_down" from="Control/BuildPanel/BuildHouseButton" to="Control" method="_on_build_house_button_button_down"]
+[connection signal="button_down" from="Control/BuildPanel/CloseBuildMenu" to="Control" method="_on_close_build_menu_button_down"]
+[connection signal="area_entered" from="Control/Area2D" to="Control" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Control/Area2D" to="Control" method="_on_area_2d_area_exited"]

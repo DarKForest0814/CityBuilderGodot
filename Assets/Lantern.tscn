@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cafu4nvk42jkl"]
+
+[ext_resource type="PackedScene" uid="uid://ch4isoutvqsn2" path="res://Assets/lantern.blend" id="1_yfomd"]
+[ext_resource type="Script" path="res://Scripts/GridObject.gd" id="2_1qvys"]
+
+[node name="lantern" instance=ExtResource("1_yfomd")]
+script = ExtResource("2_1qvys")
+type = "BUI"
+gridW = 1
+gridH = 1
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0261595, 6.42369, -0.0465012)
+light_color = Color(0.9455, 0.529449, 0.307537, 1)
+light_energy = 11.831
+omni_range = 10.564

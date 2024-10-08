@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://btdj4cc5pkka6"
+uid="uid://bs4y7o05hywt5"
 path="res://.godot/imported/house.blend-6b1d719a5274cda3e260358679b81ce4.scn"
 
 [deps]
@@ -16,7 +16,7 @@ dest_files=["res://.godot/imported/house.blend-6b1d719a5274cda3e260358679b81ce4.
 nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
-nodes/root_scale=0.5
+nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=true
 meshes/generate_lods=true

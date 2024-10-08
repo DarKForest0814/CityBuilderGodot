@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://dp8ra4umjaupe"]
+
+[ext_resource type="Script" path="res://Scripts/InterfaceMenu.gd" id="1_f64oa"]
+[ext_resource type="Theme" uid="uid://cydykq3qlimf4" path="res://Textures/UITheme.tres" id="2_x71le"]
+[ext_resource type="PackedScene" uid="uid://bxisp2qh6qj2g" path="res://Assets/env1.blend" id="3_ywjqt"]
+[ext_resource type="Texture2D" uid="uid://2immq8n1sgj0" path="res://Textures/skybox.exr" id="4_jh6pk"]
+[ext_resource type="Texture2D" uid="uid://b0gvsvxysr1g7" path="res://Textures/Title_sub.png" id="5_77pom"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4h38x"]
+panorama = ExtResource("4_jh6pk")
+
+[sub_resource type="Sky" id="Sky_ulos3"]
+sky_material = SubResource("PanoramaSkyMaterial_4h38x")
+
+[sub_resource type="Environment" id="Environment_dphir"]
+background_mode = 2
+background_energy_multiplier = 1.75
+sky = SubResource("Sky_ulos3")
+sky_custom_fov = 59.2
+sky_rotation = Vector3(0, -3.15905, 0)
+
+[node name="MainMenu" type="Node3D"]
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1151.0
+offset_bottom = 645.0
+theme = ExtResource("2_x71le")
+script = ExtResource("1_f64oa")
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu"]
+layout_mode = 0
+offset_left = 869.0
+offset_top = 378.0
+offset_right = 1081.0
+offset_bottom = 561.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer"]
+layout_mode = 2
+
+[node name="Continue" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_x71le")
+text = "Continue"
+
+[node name="NewGame" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_x71le")
+text = "New Game"
+
+[node name="Settings" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_x71le")
+text = "Settings"
+
+[node name="Quit" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_x71le")
+text = "Quit"
+
+[node name="env1" parent="." instance=ExtResource("3_ywjqt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.731413, -15.8903, 307.319)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dphir")
+
+[node name="TitleSub" type="Sprite2D" parent="."]
+position = Vector2(336, 193)
+scale = Vector2(0.307812, 0.290741)
+texture = ExtResource("5_77pom")
+
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Continue" to="Menu" method="_on_continue_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/NewGame" to="Menu" method="_on_new_game_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Settings" to="Menu" method="_on_settings_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Quit" to="Menu" method="_on_quit_pressed"]

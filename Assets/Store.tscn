@@ -1,25 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://deiwg66u4boc1"]
+[gd_scene load_steps=3 format=3 uid="uid://b6kvbgqug16k2"]
 
-[ext_resource type="Script" path="res://GridObject.gd" id="1_j8cy5"]
+[ext_resource type="Script" path="res://Scripts/GridObject.gd" id="1_j8cy5"]
 [ext_resource type="PackedScene" uid="uid://dmeafaktpvvq7" path="res://Assets/store.blend" id="2_g8sc6"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gwtdy"]
-size = Vector3(8.14209, 5.36316, 2.85261)
-
-[node name="Store" type="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.05722, 0, 1.78895)
+[node name="store" instance=ExtResource("2_g8sc6")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("1_j8cy5")
 type = "STO"
 gridW = 5
 gridH = 6
-gridOffsetX = 3
-gridOffsetY = 2
 
-[node name="store" parent="." instance=ExtResource("2_g8sc6")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.20911, -1.19209e-07, 0.398348)
-
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1.0616, 0, 0, 0, 1.0616, 0, 0, 0, 5.33488, 0.222988, 2.18158, -0.48364)
-shape = SubResource("BoxShape3D_gwtdy")
+[node name="Store" parent="." index="0"]
+transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 7.38861, 0, 11.6766)

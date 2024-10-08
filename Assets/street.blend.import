@@ -3,17 +3,17 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://74hx0w06tgkx"
-path="res://.godot/imported/house.blend-51c9025a0ccfd35a41e2d75d36f351ac.scn"
+uid="uid://db2j7lku0sre4"
+path="res://.godot/imported/street.blend-cc5b0400055f4cbbd84186a133d7e638.scn"
 
 [deps]
 
-source_file="res://Icons/house.blend"
-dest_files=["res://.godot/imported/house.blend-51c9025a0ccfd35a41e2d75d36f351ac.scn"]
+source_file="res://Assets/street.blend"
+dest_files=["res://.godot/imported/street.blend-cc5b0400055f4cbbd84186a133d7e638.scn"]
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

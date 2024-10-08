@@ -3,17 +3,17 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bxisp2qh6qj2g"
-path="res://.godot/imported/env1.blend-b860a52a5e6a71da85c2910f62142188.scn"
+uid="uid://ch4isoutvqsn2"
+path="res://.godot/imported/lantern.blend-f4f54d979dfba94b11c9a5c1cab15024.scn"
 
 [deps]
 
-source_file="res://Assets/env1.blend"
-dest_files=["res://.godot/imported/env1.blend-b860a52a5e6a71da85c2910f62142188.scn"]
+source_file="res://Assets/lantern.blend"
+dest_files=["res://.godot/imported/lantern.blend-f4f54d979dfba94b11c9a5c1cab15024.scn"]
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
@@ -31,18 +31,7 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"Material.002": {
-"use_external/enabled": true,
-"use_external/path": ""
-},
-"Material.003": {
-"use_external/enabled": true,
-"use_external/path": ""
-}
-}
-}
+_subresources={}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true

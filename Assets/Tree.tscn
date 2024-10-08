@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://vnh3f7b5msc0"]
+
+[ext_resource type="PackedScene" uid="uid://d106lkfhsavvp" path="res://Assets/tree1.blend" id="1_1gosl"]
+[ext_resource type="Script" path="res://Scripts/GridObject.gd" id="2_an0qo"]
+
+[node name="tree1" instance=ExtResource("1_1gosl")]
+script = ExtResource("2_an0qo")
+type = "BUI"
+gridW = 2
+gridH = 2
+
+[node name="Cylinder" parent="." index="0"]
+transform = Transform3D(0.390503, 0, 0, 0, 0.390503, 0, 0, 0, 0.390503, 1, 0, 1)

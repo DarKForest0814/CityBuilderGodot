@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwgqv4ad3hhiv"]
+
+[ext_resource type="PackedScene" uid="uid://cbr15uefiikeu" path="res://Assets/GasStation.blend" id="1_mpn7i"]
+[ext_resource type="Script" path="res://Scripts/GridObject.gd" id="2_menpi"]
+
+[node name="GasStation" instance=ExtResource("1_mpn7i")]
+script = ExtResource("2_menpi")
+type = "BUI"
+gridW = 10
+gridH = 9
+
+[node name="Cube" parent="." index="0"]
+transform = Transform3D(-0.5, 0, 6.71407e-08, 0, 0.311, 0, -4.37114e-08, 0, -0.768, 5.79077, 3.608, 2.01061)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.18969, 3.77951, 8.56603)
+light_color = Color(0.894922, 0.894922, 0.894922, 1)
+light_energy = 11.216
+spot_range = 5.68449
+spot_angle = 29.0804
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.18969, 3.77951, 12.155)
+light_color = Color(0.894922, 0.894922, 0.894922, 1)
+light_energy = 11.216
+spot_range = 5.68449
+spot_angle = 29.0804
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 9.38584, 3.77951, 8.56603)
+light_color = Color(0.894922, 0.894922, 0.894922, 1)
+light_energy = 11.216
+spot_range = 5.68449
+spot_angle = 29.0804
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 9.38584, 3.77951, 12.2783)
+light_color = Color(0.894922, 0.894922, 0.894922, 1)
+light_energy = 11.216
+spot_range = 5.68449
+spot_angle = 29.0804

@@ -11,15 +11,16 @@ config_version=5
 [application]
 
 config/name="City_Building_Prototype"
-run/main_scene="res://city_scene.tscn"
+run/main_scene="res://Scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
+boot_splash/image="res://Textures/Title_splash.png"
 config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*res://GameManager.gd"
-BuildManager="*res://BuildManager.gd"
-Grid="*res://Grid.gd"
+GameManager="*res://Scripts/GameManager.gd"
+BuildManager="*res://Scripts/BuildManager.gd"
+Grid="*res://Scripts/Grid.gd"
 
 [input]
 

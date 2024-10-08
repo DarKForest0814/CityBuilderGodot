@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://8je4w4ognpkl"]
+
+[ext_resource type="PackedScene" uid="uid://db2j7lku0sre4" path="res://Assets/street.blend" id="1_6liy4"]
+[ext_resource type="Script" path="res://Scripts/GridObject.gd" id="2_n7bcd"]
+
+[node name="street" instance=ExtResource("1_6liy4")]
+script = ExtResource("2_n7bcd")
+type = "STR"
+gridW = 3
+gridH = 3
+
+[node name="Street" parent="." index="0"]
+transform = Transform3D(3, 0, 0, 0, 0.751, 0, 0, 0, 3, 2.05277, 0, 2.34854)

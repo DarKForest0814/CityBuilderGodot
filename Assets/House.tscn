@@ -1,29 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://btfst8u4oh2ws"]
+[gd_scene load_steps=3 format=3 uid="uid://b3h6upb4jf4ne"]
 
-[ext_resource type="Script" path="res://GridObject.gd" id="1_svr0h"]
-[ext_resource type="PackedScene" uid="uid://btdj4cc5pkka6" path="res://Assets/house.blend" id="2_46f8m"]
+[ext_resource type="PackedScene" uid="uid://bs4y7o05hywt5" path="res://Assets/house.blend" id="1_i6oau"]
+[ext_resource type="Script" path="res://Scripts/GridObject.gd" id="2_yjird"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_maqxi"]
-size = Vector3(9.18439, 6.27344, 10.4574)
-
-[node name="House" type="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.73901, 0, 3.4196)
-script = ExtResource("1_svr0h")
+[node name="house" instance=ExtResource("1_i6oau")]
+script = ExtResource("2_yjird")
 type = "BUI"
 gridW = 4
-gridH = 5
-gridOffsetX = 3
-gridOffsetY = 2
+gridH = 6
+gridOffsetX = 1
+gridOffsetY = 1
 
-[node name="house" parent="." instance=ExtResource("2_46f8m")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.518392, 0, -0.678133)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="house"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.389038, 2.63672, 0.686204)
-shape = SubResource("BoxShape3D_maqxi")
-
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.947724, 2.63672, -0.62059)
-shape = SubResource("BoxShape3D_maqxi")
+[node name="House" parent="." index="0"]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 3.31941, 1.77059, 2.37762)

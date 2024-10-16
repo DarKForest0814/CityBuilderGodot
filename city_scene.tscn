@@ -1,19 +1,105 @@
 [gd_scene load_steps=21 format=3 uid="uid://dyd10ofa5v0kj"]
 
 [ext_resource type="PackedScene" uid="uid://bxisp2qh6qj2g" path="res://Assets/env1.blend" id="1_4y43a"]
-[ext_resource type="Script" path="res://camera.gd" id="1_74emx"]
-[ext_resource type="Script" path="res://interfaceManager.gd" id="2_huftw"]
-[ext_resource type="Script" path="res://MouseArea2d.gd" id="4_da3nu"]
 [ext_resource type="Texture2D" uid="uid://cdsnp3012kn85" path="res://Icons/office.png" id="4_era61"]
 [ext_resource type="Theme" uid="uid://cydykq3qlimf4" path="res://Textures/UITheme.tres" id="4_p3cix"]
 [ext_resource type="Texture2D" uid="uid://dajp23sqdsjjr" path="res://Textures/buttonBack.png" id="5_04fxe"]
 [ext_resource type="Texture2D" uid="uid://ddhktuchis1xy" path="res://Icons/close.png" id="5_4q8c8"]
+[ext_resource type="Script" path="res://Scripts/MouseArea2d.gd" id="6_86qbd"]
 [ext_resource type="Texture2D" uid="uid://2immq8n1sgj0" path="res://Textures/skybox.exr" id="10_2w8r0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oxo1t"]
 size = Vector3(12.5419, 1, 9.7583)
 
+[sub_resource type="GDScript" id="GDScript_f38co"]
+script/source = "extends Camera3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	var treshold = 10   # threshold for beginning movement
+	var stepValue = 1   # movement steps
+	var viewportSize = get_viewport().size    # getting viewport size to calculate treshold for camera movement
+	var mousePos = get_viewport().get_mouse_position()
+	
+	# movement along x axis
+	if mousePos.x < treshold:
+		position.x -= stepValue
+	elif mousePos.x > viewportSize.x - treshold:
+		position.x += stepValue
+	
+	# movement along y axis
+	if mousePos.y < treshold:
+		position.z -= stepValue
+	elif mousePos.y > viewportSize.y - treshold:
+		position.z += stepValue
+"
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wtk1t"]
+
+[sub_resource type="GDScript" id="GDScript_e8xsd"]
+script/source = "extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$BuildPanel.visible = false
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	$Cash.text = \"MONEY : \" + str(GameManager.money)
+	$Time.text = \"Time : 12:00\"
+
+func on_build_button_down() -> void:
+	print(\"info: Store selected\")
+	if GameManager.CurrentState != GameManager.State.Building:
+		GameManager.CurrentState = GameManager.State.Building
+		BuildManager.SpawnStore()
+	else:
+		BuildManager.Currentspawnable.queue_free()
+		BuildManager.Currentspawnable = null
+		GameManager.CurrentState = GameManager.State.Play
+
+func _on_build_house_button_button_down() -> void:
+	print(\"info: House selected\")
+	if GameManager.CurrentState != GameManager.State.Building:
+		GameManager.CurrentState = GameManager.State.Building
+		BuildManager.SpawnHouse()
+	else:
+		BuildManager.Currentspawnable.queue_free()
+		BuildManager.Currentspawnable = null
+		GameManager.CurrentState = GameManager.State.Play
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	BuildManager.is_valid_build = false
+
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	BuildManager.is_valid_build = true
+
+
+func _on_build_button_button_down() -> void:
+	print(\"info: opening building menu\")
+	$BuildPanel.visible = true
+	$BuildButton.visible = false
+
+
+func _on_close_build_menu_button_down() -> void:
+	$BuildButton.visible = true
+	if BuildManager.Currentspawnable != null:
+		BuildManager.Currentspawnable.queue_free()
+		BuildManager.Currentspawnable = null
+	print(\"info: closing building menu\")
+	GameManager.CurrentState = GameManager.State.Play
+	$BuildPanel.visible = false
+"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ny5yh"]
 texture = ExtResource("5_04fxe")
@@ -59,7 +145,7 @@ transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.670945, 0.741507, 0, -0.741507, 0.670945, 0, 22.4479, 8.91553)
-script = ExtResource("1_74emx")
+script = SubResource("GDScript_f38co")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.718636, 1.08564, 0)
@@ -74,7 +160,7 @@ anchor_bottom = 1.0
 offset_top = -191.0
 grow_horizontal = 2
 grow_vertical = 0
-script = ExtResource("2_huftw")
+script = SubResource("GDScript_e8xsd")
 
 [node name="BuildButton" type="Button" parent="Control"]
 layout_mode = 1
@@ -176,7 +262,7 @@ grow_horizontal = 0
 theme = ExtResource("4_p3cix")
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("4_da3nu")
+script = ExtResource("6_86qbd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_u1ydi")

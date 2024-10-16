@@ -44,6 +44,7 @@ func _process(delta: float) -> void:
 		var distance = -origin.y/direction.y
 		var position = origin + direction * distance
 		if Currentspawnable != null:
+			Currentspawnable.get_child(2).visible = true
 			for i in selected:
 				i.is_selected = false
 			selected = []
@@ -59,18 +60,22 @@ func _process(delta: float) -> void:
 			Currentspawnable.ActiveBuilding = true
 			var gridX = round(abs(round(position.x)) / Grid.tileSize) #divided by tile size 
 			var gridY = round(abs(round(position.z)) / Grid.tileSize) #divided by tile size
-			if gridY < Grid.gridH + 1 and gridX < Grid.gridH + 1  and gridY > 0 and gridX > 0:
-				Currentspawnable.global_position = Vector3(gridX * Grid.tileSize, position.y + 2, gridY * Grid.tileSize)
-			if Input.is_action_just_released("LeftMouseDown") and is_valid_build and is_not_occupied:
-				var obj := CurrentspawnableCopy.duplicate()
-				obj.ActiveBuilding = false
-				get_tree().root.add_child(obj)
-				obj.global_position = Currentspawnable.global_position
-				obj.global_position.y -= 2
-				for i in selected:
-					i.is_occupied = true
+			if Input.is_action_just_released("LeftMouseDown"):
+				if gridY < Grid.gridH + 1 and gridX < Grid.gridH + 1  and gridY > 0 and gridX > 0:
+					Currentspawnable.global_position = Vector3(gridX * Grid.tileSize, position.y + 2, gridY * Grid.tileSize)
 	else:
 		Grid.hide_grid()
+		
+func place():
+	Currentspawnable.get_child(2).visible = false
+	if is_valid_build and is_not_occupied:
+		var obj := CurrentspawnableCopy.duplicate()
+		obj.ActiveBuilding = false
+		get_tree().root.add_child(obj)
+		obj.global_position = Currentspawnable.global_position
+		obj.global_position.y -= 2
+		for i in selected:
+			i.is_occupied = true
 
 ### spawn functions ###
 

@@ -21,6 +21,11 @@ config/icon="res://icon.svg"
 GameManager="*res://Scripts/GameManager.gd"
 BuildManager="*res://Scripts/BuildManager.gd"
 Grid="*res://Scripts/Grid.gd"
+Tile="*res://Scripts/Tile.gd"
+
+[global_group]
+
+tile="Gets assigned to all tiles in the grid"
 
 [input]
 

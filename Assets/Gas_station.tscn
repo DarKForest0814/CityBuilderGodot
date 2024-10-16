@@ -1,41 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwgqv4ad3hhiv"]
+[gd_scene load_steps=4 format=3 uid="uid://bwgqv4ad3hhiv"]
 
 [ext_resource type="PackedScene" uid="uid://cbr15uefiikeu" path="res://Assets/GasStation.blend" id="1_mpn7i"]
 [ext_resource type="Script" path="res://Scripts/GridObject.gd" id="2_menpi"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_otlfc"]
+size = Vector3(18.0732, 12.0529, 23.1114)
+
 [node name="GasStation" instance=ExtResource("1_mpn7i")]
 script = ExtResource("2_menpi")
 type = "BUI"
-gridW = 10
-gridH = 9
 
 [node name="Cube" parent="." index="0"]
 transform = Transform3D(-0.5, 0, 6.71407e-08, 0, 0.311, 0, -4.37114e-08, 0, -0.768, 5.79077, 3.608, 2.01061)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.18969, 3.77951, 8.56603)
+[node name="SpotLight3D" type="SpotLight3D" parent="Cube" index="0"]
+transform = Transform3D(-2, 1.74846e-07, 7.64274e-15, 0, -1.40551e-07, 3.21543, 1.13832e-07, 1.30208, 5.69159e-08, 1.20216, 0.551479, -8.5357)
 light_color = Color(0.894922, 0.894922, 0.894922, 1)
 light_energy = 11.216
 spot_range = 5.68449
 spot_angle = 29.0804
 
-[node name="SpotLight3D4" type="SpotLight3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.18969, 3.77951, 12.155)
+[node name="SpotLight3D4" type="SpotLight3D" parent="Cube" index="1"]
+transform = Transform3D(-2, 1.74846e-07, 7.64274e-15, 0, -1.40551e-07, 3.21543, 1.13832e-07, 1.30208, 5.69159e-08, 1.20216, 0.551479, -13.2088)
 light_color = Color(0.894922, 0.894922, 0.894922, 1)
 light_energy = 11.216
 spot_range = 5.68449
 spot_angle = 29.0804
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 9.38584, 3.77951, 8.56603)
+[node name="SpotLight3D2" type="SpotLight3D" parent="Cube" index="2"]
+transform = Transform3D(-2, 1.74846e-07, 7.64274e-15, 0, -1.40551e-07, 3.21543, 1.13832e-07, 1.30208, 5.69159e-08, -7.19014, 0.551479, -8.5357)
 light_color = Color(0.894922, 0.894922, 0.894922, 1)
 light_energy = 11.216
 spot_range = 5.68449
 spot_angle = 29.0804
 
-[node name="SpotLight3D3" type="SpotLight3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 9.38584, 3.77951, 12.2783)
+[node name="SpotLight3D3" type="SpotLight3D" parent="Cube" index="3"]
+transform = Transform3D(-2, 1.74846e-07, 7.64274e-15, 0, -1.40551e-07, 3.21543, 1.13832e-07, 1.30208, 5.69159e-08, -7.19014, 0.551479, -13.3694)
 light_color = Color(0.894922, 0.894922, 0.894922, 1)
 light_energy = 11.216
 spot_range = 5.68449
 spot_angle = 29.0804
+
+[node name="Collision" type="Area3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" index="0"]
+transform = Transform3D(0.853988, 0, 0, 0, 0.853988, 0, 0, 0, 0.853988, 7.16539, 3.55565, 7.89777)
+shape = SubResource("BoxShape3D_otlfc")

@@ -1,10 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://btr7wk4uxy5ds"]
+[gd_scene load_steps=4 format=3 uid="uid://btr7wk4uxy5ds"]
 
+[ext_resource type="Script" path="res://Scripts/Tile.gd" id="1_2dv2s"]
 [ext_resource type="PackedScene" uid="uid://cj77ibwpdhuxe" path="res://Assets/tile.blend" id="1_oi48n"]
 
-[node name="Tile" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_tpsnl"]
+size = Vector3(1.73547, 2.36511, 1.57605)
+
+[node name="Tile" type="StaticBody3D"]
 
 [node name="tile" parent="." instance=ExtResource("1_oi48n")]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+
+[node name="Collision" type="Area3D" parent="." groups=["tile"]]
+script = ExtResource("1_2dv2s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0571899, 0.682556, 0.115811)
+shape = SubResource("BoxShape3D_tpsnl")
+
+[connection signal="area_entered" from="Collision" to="." method="_on_collision_area_entered"]
+[connection signal="area_exited" from="Collision" to="." method="_on_collision_area_exited"]
 
 [editable path="tile"]

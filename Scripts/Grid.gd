@@ -1,7 +1,7 @@
 extends Node
 
-@export var gridW = 200
-@export var gridH = 200
+@export var gridW = 50
+@export var gridH = 50
 @export var tileSize = 2
 var content = []
 
@@ -16,34 +16,30 @@ func _ready() -> void:
 	_generate_grid()
 
 func _generate_grid():
+	var tile_origin = TILE.instantiate()
 	for x in range(gridW):
 		var tile_coordinates := Vector2.ZERO
 		tile_coordinates.x = x * tileSize
 		tile_coordinates.y = 0
 		for y in range(gridH):
-			var tile = TILE.instantiate()
+			var tile = tile_origin.duplicate() 
 			add_child(tile)
 			tile.translate(Vector3(tile_coordinates.x, 0, tile_coordinates.y))
 			tile_coordinates.y += tileSize
-			content.append("")
+			content.push_back(tile)
 	hide_grid()
 
 func show_grid():
-	var index = 0
 	for n in self.get_children():
-		if content[index] == "test":
-			if n.get_node("tile/Plane").get_active_material(0) != green:
-				n.get_node("tile/Plane").material_override = green
+		if n.get_child(1).is_occupied:
+			n.get_node("tile/Plane").material_override = red
 			n.visible = true
-		elif content[index] != "":
-			if n.get_node("tile/Plane").get_active_material(0) != red:
-				n.get_node("tile/Plane").material_override = red
+		elif n.get_child(1).is_selected:
+			n.get_node("tile/Plane").material_override = green
 			n.visible = true
-		elif content[index] == "":
-			if n.get_node("tile/Plane").get_active_material(0) != blue:
-				n.visible = false
-				n.get_node("tile/Plane").material_override = blue
-		index += 1
+		else:
+			n.visible = false
+		
 		
 
 func hide_grid():

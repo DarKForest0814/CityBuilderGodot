@@ -63,6 +63,11 @@ background_energy_multiplier = 1.75
 sky = SubResource("Sky_46x10")
 sky_custom_fov = 59.2
 sky_rotation = Vector3(0, -3.15905, 0)
+fog_light_color = Color(0.770105, 0.739278, 0.558402, 1)
+fog_light_energy = 1.26
+fog_density = 0.009
+fog_aerial_perspective = 0.41
+fog_sky_affect = 0.65
 
 [node name="CityScene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 200)
@@ -77,11 +82,11 @@ shape = SubResource("BoxShape3D_oxo1t")
 transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0, -3.05261, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.670945, 0.741507, 0, -0.741507, 0.670945, 0, 22.4479, 8.91553)
+transform = Transform3D(1, 0, 0, 0, 0.670945, 0.741507, 0, -0.741507, 0.670945, -105.991, 22.4479, -67.999)
 script = ExtResource("2_ejfgn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.718636, 1.08564, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.7861, 1.08564, -104.417)
 mesh = SubResource("CapsuleMesh_wtk1t")
 
 [node name="Control" type="Control" parent="."]
@@ -259,6 +264,12 @@ layout_mode = 2
 theme = ExtResource("4_0cv57")
 text = "Gas Station"
 
+[node name="School" type="Button" parent="Control/BuildPanel/buildings_container/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme = ExtResource("4_0cv57")
+text = "School"
+
 [node name="Area2D" type="Area2D" parent="Control"]
 visible = false
 
@@ -383,6 +394,7 @@ environment = SubResource("Environment_0o6h6")
 [connection signal="pressed" from="Control/BuildPanel/buildings_container/MarginContainer/HBoxContainer/Store" to="Control" method="_on_store_pressed"]
 [connection signal="pressed" from="Control/BuildPanel/buildings_container/MarginContainer/HBoxContainer/House" to="Control" method="_on_house_pressed"]
 [connection signal="pressed" from="Control/BuildPanel/buildings_container/MarginContainer/HBoxContainer/Gas Station" to="Control" method="_on_gas_station_pressed"]
+[connection signal="pressed" from="Control/BuildPanel/buildings_container/MarginContainer/HBoxContainer/School" to="Control" method="_on_school_pressed"]
 [connection signal="area_entered" from="Control/Area2D" to="Control" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Control/Area2D" to="Control" method="_on_area_2d_area_exited"]
 [connection signal="pressed" from="Control/MenuButton" to="Control" method="_on_menu_button_pressed"]

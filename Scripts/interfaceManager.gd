@@ -135,3 +135,9 @@ func _on_gas_station_pressed() -> void:
 	print("info: Gas_Station selected")
 	if adjust_game_state():
 		BuildManager.SpawnGasStation()
+
+
+func _on_school_pressed() -> void:
+	print("info: School selected")
+	if adjust_game_state():
+		BuildManager.SpawnSchool()

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2o8cxuxodqdm"]
+
+[ext_resource type="PackedScene" uid="uid://dyxgvxkx6v8c" path="res://Assets/school.dae" id="1_iceq6"]
+[ext_resource type="Script" path="res://Scripts/GridObject.gd" id="2_txywm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hins4"]
+size = Vector3(26.3154, 23.5699, 39.9707)
+
+[node name="school" instance=ExtResource("1_iceq6")]
+transform = Transform3D(1, 0, 0, 0, 0.648, 0, 0, 0, 0.64, 0, 0, 0)
+script = ExtResource("2_txywm")
+
+[node name="Building" parent="." index="0"]
+transform = Transform3D(8.34742e-08, 0, -4.67712, 0, 0.71907, 0, 7, 0, 5.57741e-08, 0, 0, 0)
+
+[node name="Collision" type="Area3D" parent="." index="1"]
+transform = Transform3D(1.19249e-08, 0, -0.467712, 0, 0.71907, 0, 1, 0, 5.57741e-09, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" index="0"]
+transform = Transform3D(0.853988, 0, 0, 0, 0.853988, 0, 0, 0, 0.853988, -0.135291, 8.47334, 0.698933)
+shape = SubResource("BoxShape3D_hins4")

@@ -1,14 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6kvbgqug16k2"]
+[gd_scene load_steps=4 format=3 uid="uid://b6kvbgqug16k2"]
 
 [ext_resource type="Script" path="res://Scripts/GridObject.gd" id="1_j8cy5"]
 [ext_resource type="PackedScene" uid="uid://dmeafaktpvvq7" path="res://Assets/store.blend" id="2_g8sc6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lde8i"]
+size = Vector3(21.8574, 10.2103, 13.6526)
 
 [node name="store" instance=ExtResource("2_g8sc6")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("1_j8cy5")
 type = "STO"
-gridW = 5
-gridH = 6
 
 [node name="Store" parent="." index="0"]
 transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 7.38861, 0, 11.6766)
+
+[node name="Collision" type="Area3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.97643, 4.34244, 3.31509)
+shape = SubResource("BoxShape3D_lde8i")

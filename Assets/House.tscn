@@ -1,15 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3h6upb4jf4ne"]
+[gd_scene load_steps=4 format=3 uid="uid://b3h6upb4jf4ne"]
 
 [ext_resource type="PackedScene" uid="uid://bs4y7o05hywt5" path="res://Assets/house.blend" id="1_i6oau"]
 [ext_resource type="Script" path="res://Scripts/GridObject.gd" id="2_yjird"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_86wnp"]
+size = Vector3(10.0823, 7.50745, 8.72354)
+
 [node name="house" instance=ExtResource("1_i6oau")]
 script = ExtResource("2_yjird")
-type = "BUI"
-gridW = 4
-gridH = 6
-gridOffsetX = 1
-gridOffsetY = 1
 
 [node name="House" parent="." index="0"]
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 3.31941, 1.77059, 2.37762)
+
+[node name="Collision" type="Area3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.80077, 2.99103, 1.84245)
+shape = SubResource("BoxShape3D_86wnp")

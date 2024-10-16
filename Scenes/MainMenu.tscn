@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dp8ra4umjaupe"]
+[gd_scene load_steps=12 format=3 uid="uid://dp8ra4umjaupe"]
 
 [ext_resource type="Script" path="res://Scripts/InterfaceMenu.gd" id="1_f64oa"]
 [ext_resource type="Theme" uid="uid://cydykq3qlimf4" path="res://Textures/UITheme.tres" id="2_x71le"]
 [ext_resource type="PackedScene" uid="uid://bxisp2qh6qj2g" path="res://Assets/env1.blend" id="3_ywjqt"]
 [ext_resource type="Texture2D" uid="uid://2immq8n1sgj0" path="res://Textures/skybox.exr" id="4_jh6pk"]
 [ext_resource type="Texture2D" uid="uid://b0gvsvxysr1g7" path="res://Textures/Title_sub.png" id="5_77pom"]
+[ext_resource type="PackedScene" uid="uid://b3h6upb4jf4ne" path="res://Assets/House.tscn" id="6_p0grl"]
+[ext_resource type="PackedScene" uid="uid://cafu4nvk42jkl" path="res://Assets/Lantern.tscn" id="7_650ad"]
+[ext_resource type="PackedScene" uid="uid://bwgqv4ad3hhiv" path="res://Assets/Gas_station.tscn" id="8_dkfhm"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4h38x"]
 panorama = ExtResource("4_jh6pk")
@@ -71,6 +74,15 @@ environment = SubResource("Environment_dphir")
 position = Vector2(336, 193)
 scale = Vector2(0.307812, 0.290741)
 texture = ExtResource("5_77pom")
+
+[node name="house" parent="." instance=ExtResource("6_p0grl")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 18, -11, -33)
+
+[node name="lantern" parent="." instance=ExtResource("7_650ad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -12, -28)
+
+[node name="GasStation" parent="." instance=ExtResource("8_dkfhm")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -12, -11, -44)
 
 [connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Continue" to="Menu" method="_on_continue_pressed"]
 [connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/NewGame" to="Menu" method="_on_new_game_pressed"]
